@@ -2,16 +2,19 @@ import telebot
 import requests
 import json
 
-#Создание экземпляр бота.
-bot = telebot.TeleBot('7299418860:AAFX7wPuKBfXdVQnZxV7aCXNVNgDpzrZF8k')
-API = '8172e111ac91e21b583aa3af7253d1f7'
+# Создание экземпляр бота.
+bot = telebot.TeleBot('##########')
+API = '######'
 
-#Функция обрабатывает команду start от пользователя.
+
+# Функция обрабатывает команду start от пользователя.
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, 'Доброго времени суток!!!Какой город тебя интересует?')
+    bot.send_message(message.chat.id, f'Доброго времени суток!!!'
+                     f'Какой город тебя интересует?')
 
-# Функция принимает от пользователя название города, обрабатвает 
+
+# Функция принимает от пользователя название города, обрабатвает
 # и выдает какая погода и соответствующую картинку
 @bot.message_handler(content_types=['text'])
 def get_weather(message):
@@ -30,7 +33,8 @@ def get_weather(message):
     else:
         file = open('./' + 'cold.png', 'rb')
         phrasa = 'Колотуннн!'
-    bot.send_photo(message.chat.id, file, caption= phrasa)                
+    bot.send_photo(message.chat.id, file, caption=phrasa)          
+
 
 # Запуск бота
 bot.polling(non_stop=True)
